@@ -15,10 +15,10 @@ import java.lang.reflect.Method;
 
 
 public class InputParser {
-    Commands commands;
+    Commands command;
     static ParkingLot parkingLot;
     public InputParser() {
-        commands = new Commands();
+        command = new Commands();
         parkingLot = new ParkingLot();
     }
     public void parseTextInput(String inputString) {
@@ -27,7 +27,7 @@ public class InputParser {
         switch (inputs.length) {
             case 1:
                 try {
-                    Method method = commands.commandsMap.get(inputString);
+                    Method method = command.commandsMap.get(inputString);
                     if (method != null) {
                         method.invoke(parkingLot);
                     } else {
@@ -41,7 +41,7 @@ public class InputParser {
                 break;
             case 2:
                 try {
-                    Method method = commands.commandsMap.get(inputs[0]);
+                    Method method = command.commandsMap.get(inputs[0]);
                     if (method != null) {
                         method.invoke(parkingLot, inputs[1]);
                     } else {
@@ -55,7 +55,7 @@ public class InputParser {
                 break;
             case 3:
                 try {
-                    Method method = commands.commandsMap.get(inputs[0]);
+                    Method method = command.commandsMap.get(inputs[0]);
                     if (method != null) {
                         method.invoke(parkingLot, inputs[1], inputs[2]);
                     } else {
