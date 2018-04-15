@@ -6,8 +6,11 @@
 package parkinglot;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import static jdk.nashorn.tools.ShellFunctions.input;
 /**
  *
  * @author Lidya
@@ -23,11 +26,14 @@ public class Main {
                 // Run an infinite loop
                 for (;;) {
                     try {
+                      
                         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
                         String inputString = bufferRead.readLine();
                         if (inputString.equalsIgnoreCase("exit")) {
                             break;
-                        } else if ((inputString == null) || (inputString.isEmpty())) {
+                        } else if(inputString == "input.txt"){
+                            inputParser.parseTextInput(inputString.trim());
+                        }else if ((inputString == null) || (inputString.isEmpty())) {
                             // Do nothing
                         } else {
                             inputParser.parseTextInput(inputString.trim());
